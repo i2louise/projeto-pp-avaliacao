@@ -47,8 +47,6 @@ public class Produto {
         this.qtdEstoque = qtdEstoque;
     }
 
-
-
     public String getCaminhoImagem() {
         return caminhoImagem;
     }
