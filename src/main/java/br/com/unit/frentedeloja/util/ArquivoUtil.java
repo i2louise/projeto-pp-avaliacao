@@ -173,7 +173,7 @@ public class ArquivoUtil {
             bw.newLine();
 
         } catch (IOException e) {
-            System.out.println("Errp ap salvar venda.");
+            System.out.println("Erro ap salvar venda.");
         }
     }
 
@@ -216,6 +216,11 @@ public class ArquivoUtil {
             for (Produto produto : produtos) {
                 if (produto.getCodigoBarras().equals(codigoVendido)) {
                     int novoEstoque = produto.getQtdEstoque() - item.getQuantidade();
+
+                    if (novoEstoque < 0) {
+                        novoEstoque = 0;
+                    }
+
                     produto.setQtdEstoque(novoEstoque);
                 }
             }
@@ -258,7 +263,7 @@ public class ArquivoUtil {
 
     // METODO P/ BUSCAR ITEM DE UMA VENDA
 
-    public static List<ItemVenda> listarItensVendas(int idVenda) {
+    public static List<ItemVenda> listarItensVenda(int idVenda) {
         criarArquivos();
 
         List<ItemVenda> itens = new ArrayList<>();
@@ -294,10 +299,7 @@ public class ArquivoUtil {
     }
 
 
-
-
-
-    // --------------------- LIMPAR PASTA PERSIST ---------------------
+    // --------------------- LIMPAR PERSIST ---------------------
 
     public static void resetarDados() {
         limparArquivo("persist/produtos.csv");

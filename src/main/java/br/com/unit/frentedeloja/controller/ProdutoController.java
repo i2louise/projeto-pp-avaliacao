@@ -7,11 +7,17 @@ import java.util.List;
 
 public class ProdutoController {
 
-    public void cadastrarProduto(Produto produto){
+    public boolean cadastrarProduto(Produto produto) {
+
+        if (produtoExiste(produto.getCodigoBarras())) {
+            return false;
+        }
+
         ArquivoUtil.salvarProduto(produto);
+        return true;
     }
 
-    public List<Produto> listarProdutos(){
+    public List<Produto> listarProdutos() {
         return ArquivoUtil.listarProdutos();
     }
 
@@ -33,6 +39,20 @@ public class ProdutoController {
 
                 ArquivoUtil.salvarTodosProdutos(produtos);
 
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean removerProduto(String codigoBarras) {
+        List<Produto> produtos = ArquivoUtil.listarProdutos();
+
+        for (int i = 0; i < produtos.size(); i++) {
+            if (produtos.get(i).getCodigoBarras().equals(codigoBarras)) {
+                produtos.remove(i);
+                ArquivoUtil.salvarTodosProdutos(produtos);
                 return true;
             }
         }
