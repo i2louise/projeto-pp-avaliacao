@@ -78,5 +78,4 @@ public class Venda {
     public void setItens(List<ItemVenda> itens) {
         this.itens = itens;
     }
-
 }
