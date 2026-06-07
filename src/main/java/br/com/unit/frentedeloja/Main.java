@@ -6,7 +6,6 @@ import br.com.unit.frentedeloja.model.ItemVenda;
 import br.com.unit.frentedeloja.model.Produto;
 import br.com.unit.frentedeloja.model.Venda;
 import br.com.unit.frentedeloja.util.ArquivoUtil;
-import br.com.unit.frentedeloja.util.ValidacaoCPF;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        ProdutoController produtoController = new ProdutoController();
+        // ProdutoController produtoController = new ProdutoController();
 
         /* ADD PRODUTOS
 
@@ -26,8 +25,6 @@ public class Main {
         Produto produto2 = new Produto("154567", "Teclado", 250.00, 25, "imagens/teclado.png");
 
         produtoController.cadastrarProduto(produto2);
-
-         */
 
        // TESTE C/ CPF VÁLIDO
 
@@ -97,5 +94,7 @@ public class Main {
         System.out.println("ID da venda: " + venda2.getIdVenda());
         System.out.println("CPF: " + venda2.getCpfCliente());
         System.out.println("Pagamento: " + venda2.getFormaPagamento());
+
+         */
     }
 }
