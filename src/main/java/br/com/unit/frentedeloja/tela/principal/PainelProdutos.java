@@ -21,6 +21,7 @@ public class PainelProdutos extends JPanel {
     private JButton botaoAdicionar;
     private JButton botaoAlterar;
     private JButton botaoRemover;
+    private JButton botaoAtualizar;
 
     private JLabel labelTotalProdutos;
 
@@ -88,20 +89,23 @@ public class PainelProdutos extends JPanel {
         painelRodape.setBackground(new Color(240, 240, 240));
         painelRodape.setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
 
-        JPanel painelBotoes = new JPanel(new GridLayout(1, 3, 10, 0));
+        JPanel painelBotoes = new JPanel(new GridLayout(1, 4, 10, 0));
         painelBotoes.setBackground(new Color(240, 240, 240));
 
         botaoAdicionar = new JButton("Adicionar Produto");
         botaoAlterar = new JButton("Alterar Produto");
         botaoRemover = new JButton("Remover Produto");
+        botaoAtualizar = new JButton("Atualizar Estoque");
 
         configurarBotao(botaoAdicionar);
         configurarBotao(botaoAlterar);
         configurarBotao(botaoRemover);
+        configurarBotao(botaoAtualizar);
 
         painelBotoes.add(botaoAdicionar);
         painelBotoes.add(botaoAlterar);
         painelBotoes.add(botaoRemover);
+        painelBotoes.add(botaoAtualizar);
 
         painelRodape.add(painelBotoes, BorderLayout.EAST);
 
@@ -110,6 +114,7 @@ public class PainelProdutos extends JPanel {
         botaoAdicionar.addActionListener(e -> abrirPopupCadastrar());
         botaoAlterar.addActionListener(e -> abrirPopupAlterar());
         botaoRemover.addActionListener(e -> abrirPopupRemover());
+        botaoAtualizar.addActionListener(e -> carregarProdutos());
     }
 
     private void configurarBotao(JButton botao) {
