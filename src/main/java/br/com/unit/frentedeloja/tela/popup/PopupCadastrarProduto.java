@@ -130,8 +130,14 @@ public class PopupCadastrarProduto extends JDialog {
 
                 File pastaImagens = new File("resources/imagens");
 
-                if (!pastaImagens.exists()) {
-                    pastaImagens.mkdirs();
+                if (!pastaImagens.exists() && !pastaImagens.mkdirs()) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Não foi possível criar a pasta de imagens.",
+                            "Erro",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
                 }
 
                 String nomeArquivo = arquivoSelecionado.getName();

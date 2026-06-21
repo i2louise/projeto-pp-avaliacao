@@ -124,8 +124,27 @@ public class PopupRemoverProduto extends JDialog {
         );
 
         if (resposta == JOptionPane.YES_OPTION) {
-            produtoController.removerProduto(produtoSelecionado.getCodigoBarras());
-            dispose();
+            boolean removeu = produtoController.removerProduto(
+                    produtoSelecionado.getCodigoBarras()
+            );
+
+            if (removeu) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Produto removido com sucesso.",
+                        "Sucesso",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Produto não encontrado.",
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
         }
     }
 }

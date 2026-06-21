@@ -19,26 +19,26 @@ public class ArquivoUtil {
     public static void criarArquivos() {
 
         try {
-            File pasta = new File("persist");
+            File pasta = new File(PASTA);
 
-            if (!pasta.exists()) {
-                pasta.mkdir();
+            if (!pasta.exists() && !pasta.mkdir()) {
+                throw new IOException("Não foi possível criar a pasta persist.");
             }
 
             File produtos = new File(ARQUIVO_PRODUTOS);
             File vendas = new File(ARQUIVO_VENDAS);
             File itensVendas = new File(ARQUIVO_ITENS_VENDA);
 
-            if (!produtos.exists()) {
-                produtos.createNewFile();
+            if (!produtos.exists() && !produtos.createNewFile()) {
+                throw new IOException("Não foi possível criar produtos.csv");
             }
 
-            if (!vendas.exists()) {
-                vendas.createNewFile();
+            if (!vendas.exists() && !vendas.createNewFile()) {
+                throw new IOException("Não foi possível criar vendas.csv");
             }
 
-            if (!itensVendas.exists()) {
-                itensVendas.createNewFile();
+            if (!itensVendas.exists() && !itensVendas.createNewFile()) {
+                throw new IOException("Não foi possível criar itens_venda.csv");
             }
 
         } catch (IOException e ) {
@@ -211,7 +211,6 @@ public class ArquivoUtil {
 
         salvarTodosProdutos(produtos);
     }
-
 
     public static List<Venda> listarVendas() {
         criarArquivos();
