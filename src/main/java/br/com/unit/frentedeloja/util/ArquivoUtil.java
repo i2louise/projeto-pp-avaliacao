@@ -48,8 +48,6 @@ public class ArquivoUtil {
 
     //--------------------- PRODUTOS ---------------------
 
-    // METODO P/ SALVAR PRODUTOS
-
     public static void salvarProduto(Produto produto) {
         criarArquivos();
 
@@ -63,8 +61,6 @@ public class ArquivoUtil {
             System.out.println("Erro ao salvar o produto.");
         }
     }
-
-    // METODO P/ LISTAR PRODUTOS
 
     public static List<Produto> listarProdutos() {
         criarArquivos();
@@ -98,8 +94,6 @@ public class ArquivoUtil {
         return produtos;
     }
 
-    // METODO P/ BUSCAR PRODUTO POR CODIGO
-
     public static Produto buscarProdutoPorCodigo(String codigoBarras) {
         List<Produto> produtos = listarProdutos();
 
@@ -112,7 +106,6 @@ public class ArquivoUtil {
         return null;
     }
 
-    // METODO P/ SALVAR PRODUTOS
 
     public static void salvarTodosProdutos(List<Produto> produtos) {
         criarArquivos();
@@ -131,8 +124,6 @@ public class ArquivoUtil {
     }
 
     // --------------------- VENDAS ---------------------
-
-    // METODO P/ GERAR ID
 
     public static int gerarProxIdVenda() {
         criarArquivos();
@@ -161,8 +152,6 @@ public class ArquivoUtil {
         return maiorId + 1;
     }
 
-    // METODO P/ SALVAR VENDAS
-
     public static void salvarVenda(Venda venda) {
         criarArquivos();
 
@@ -176,8 +165,6 @@ public class ArquivoUtil {
             System.out.println("Erro ap salvar venda.");
         }
     }
-
-    // METODO P/ SALVAR ITEM DA VENDA
 
     public static void salvarItensVenda(Venda venda) {
         criarArquivos();
@@ -197,15 +184,11 @@ public class ArquivoUtil {
         }
     }
 
-    // METODO P/ CONCLUSAO DE VENDA
-
     public static void concluirVenda(Venda venda) {
         salvarVenda(venda);
         salvarItensVenda(venda);
         atualizarEstoqueAposVenda(venda);
     }
-
-    // METODO P/ ATT ESTOQUE POS-VENDA
 
     public static void atualizarEstoqueAposVenda(Venda venda) {
         List<Produto> produtos = listarProdutos();
@@ -229,7 +212,6 @@ public class ArquivoUtil {
         salvarTodosProdutos(produtos);
     }
 
-    // METODO P/ LISTAR VENDAS
 
     public static List<Venda> listarVendas() {
         criarArquivos();
@@ -260,8 +242,6 @@ public class ArquivoUtil {
 
         return vendas;
     }
-
-    // METODO P/ BUSCAR ITEM DE UMA VENDA
 
     public static List<ItemVenda> listarItensVenda(int idVenda) {
         criarArquivos();
@@ -296,22 +276,5 @@ public class ArquivoUtil {
         }
 
         return itens;
-    }
-
-
-    // --------------------- LIMPAR PERSIST ---------------------
-
-    public static void resetarDados() {
-        limparArquivo("persist/produtos.csv");
-        limparArquivo("persist/vendas.csv");
-        limparArquivo("persist/itens_venda.csv");
-    }
-
-    private static void limparArquivo(String caminho) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminho))) {
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
