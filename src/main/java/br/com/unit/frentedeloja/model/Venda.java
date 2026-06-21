@@ -17,14 +17,6 @@ public class Venda {
         this.dataVenda = LocalDateTime.now();
     }
 
-    public Venda(int idVenda, String cpfCliente, String formaPagamento) {
-        this.idVenda = idVenda;
-        this.cpfCliente = cpfCliente;
-        this.formaPagamento = formaPagamento;
-        this.dataVenda = LocalDateTime.now();
-        this.itens = new ArrayList<>();
-    }
-
     public void adicionarItem(ItemVenda itemVenda) {
         itens.add(itemVenda);
     }
@@ -73,9 +65,5 @@ public class Venda {
 
     public List<ItemVenda> getItens() {
         return itens;
-    }
-
-    public void setItens(List<ItemVenda> itens) {
-        this.itens = itens;
     }
 }

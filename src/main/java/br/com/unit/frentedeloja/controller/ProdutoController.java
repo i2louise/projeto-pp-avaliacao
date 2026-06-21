@@ -21,14 +21,6 @@ public class ProdutoController {
         return ArquivoUtil.listarProdutos();
     }
 
-    public Produto buscarPorCodigo(String codigoBarras) {
-        return ArquivoUtil.buscarProdutoPorCodigo(codigoBarras);
-    }
-
-    public void salvarTodosProdutos(List<Produto> produtos){
-        ArquivoUtil.salvarTodosProdutos(produtos);
-    }
-
     public boolean alterarProduto(Produto produtoAlterado) {
         List<Produto> produtos = ArquivoUtil.listarProdutos();
 

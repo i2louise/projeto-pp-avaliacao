@@ -19,24 +19,12 @@ public class Produto {
         return codigoBarras;
     }
 
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
-    }
-
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public double getPreco() {
         return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
     }
 
     public int getQtdEstoque() {
@@ -49,10 +37,6 @@ public class Produto {
 
     public String getCaminhoImagem() {
         return caminhoImagem;
-    }
-
-    public void setCaminhoImagem(String caminhoImagem) {
-        this.caminhoImagem = caminhoImagem;
     }
 
     @Override

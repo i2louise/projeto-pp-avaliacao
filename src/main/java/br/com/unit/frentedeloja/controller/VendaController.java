@@ -47,10 +47,6 @@ public class VendaController {
         return true;
     }
 
-    public double calcularTotal(Venda venda) {
-        return venda.calcularTotal();
-    }
-
     public boolean concluirVenda(Venda venda) {
         if (venda == null) {
             return false;

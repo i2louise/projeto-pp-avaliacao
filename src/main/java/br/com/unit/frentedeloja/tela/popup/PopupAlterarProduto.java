@@ -8,6 +8,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
 import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class PopupAlterarProduto extends JDialog {
 
@@ -170,8 +173,34 @@ public class PopupAlterarProduto extends JDialog {
         int resultado = seletor.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
-            File arquivo = seletor.getSelectedFile();
-            campoImagem.setText(arquivo.getAbsolutePath());
+            try {
+                File arquivoSelecionado = seletor.getSelectedFile();
+
+                File pastaImagens = new File("resources/imagens");
+
+                if (!pastaImagens.exists()) {
+                    pastaImagens.mkdirs();
+                }
+
+                String nomeArquivo = arquivoSelecionado.getName();
+
+                Path origem = arquivoSelecionado.toPath();
+                Path destino = Path.of("resources", "imagens", nomeArquivo);
+
+                Files.copy(origem, destino, StandardCopyOption.REPLACE_EXISTING);
+
+                String caminhoRelativo = "resources/imagens/" + nomeArquivo;
+
+                campoImagem.setText(caminhoRelativo);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Erro ao copiar a imagem.",
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE
+                );
+            }
         }
     }
 

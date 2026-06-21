@@ -3,6 +3,7 @@ package br.com.unit.frentedeloja.tela.principal;
 import br.com.unit.frentedeloja.controller.VendaController;
 import br.com.unit.frentedeloja.model.ItemVenda;
 import br.com.unit.frentedeloja.model.Venda;
+import br.com.unit.frentedeloja.util.ValidacaoCPF;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -166,7 +167,11 @@ public class PainelVenda extends JPanel {
 
     private void adicionarProduto() {
         try {
-            String cpf = campoCpf.getText().trim();
+            String cpf = ValidacaoCPF.formatarCPF(
+                    campoCpf.getText().trim()
+            );
+
+            campoCpf.setText(cpf);
             String formaPagamento = comboPagamento.getSelectedItem().toString();
             String codigoBarras = campoCodigoBarras.getText().trim();
             int quantidade = Integer.parseInt(campoQuantidade.getText().trim());
