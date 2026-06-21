@@ -78,7 +78,12 @@ public class PainelHistoricoVendas extends JPanel {
         titulo.setFont(new Font("Arial", Font.BOLD, 18));
         titulo.setBorder(BorderFactory.createEmptyBorder(0, 0, 8, 0));
 
-        modeloVendas = new DefaultTableModel();
+        modeloVendas = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
         modeloVendas.addColumn("ID");
         modeloVendas.addColumn("CPF");
@@ -114,7 +119,12 @@ public class PainelHistoricoVendas extends JPanel {
         titulo.setFont(new Font("Arial", Font.BOLD, 18));
         titulo.setBorder(BorderFactory.createEmptyBorder(0, 0, 8, 0));
 
-        modeloItens = new DefaultTableModel();
+        modeloItens = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
         modeloItens.addColumn("Código");
         modeloItens.addColumn("Produto");

@@ -63,7 +63,12 @@ public class PainelProdutos extends JPanel {
         painelCentro.setBackground(Color.WHITE);
         painelCentro.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        modeloTabela = new DefaultTableModel();
+        modeloTabela = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
         modeloTabela.addColumn("Código de Barras");
         modeloTabela.addColumn("Nome");

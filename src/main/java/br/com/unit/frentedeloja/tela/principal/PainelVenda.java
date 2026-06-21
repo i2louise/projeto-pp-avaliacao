@@ -111,7 +111,12 @@ public class PainelVenda extends JPanel {
     }
 
     private JScrollPane montarTabela() {
-        modeloTabela = new DefaultTableModel();
+        modeloTabela = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
         modeloTabela.addColumn("Código");
         modeloTabela.addColumn("Produto");
